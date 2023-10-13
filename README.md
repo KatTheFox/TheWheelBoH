@@ -1,13 +1,14 @@
 # The Wheel
 
 `With each turn its cilia pulse and wriggle and its body flushes translucent to crimson. It might be ugly but it is beautiful like the withdrawing of blood from the labyrinths of glass. It does not cease and all its involutions are infinite. The Wheel.`
+
 The Wheel is a time control mod for [Book of Hours](https://store.steampowered.com/app/1028310/BOOK_OF_HOURS/), a 2023 game by Weather Factory. It's a port of my [mod of the same name](https://github.com/KatTheFox/The-Wheel) for [Cultist Simulator](https://store.steampowered.com/app/718670/Cultist_Simulator), another Weather Factory game.
 
 ## What does it do?
 
 The Wheel adds 3 new sliders to the options menu, which lets you control how fast each of the various speed options are in-game. It also adds the ability to bind keys to skip forward in time by 1 second, 10 seconds, or until the next recipe completion.
 
-### READ THESE INSTRUCTIONS CAREFULLY OR THE MOD WILL NOT WORK
+# Installation instructions
 
 - You will need to install BepInEx for this to work. Instructions on how to do that can be found [here](https://docs.bepinex.dev/articles/user_guide/installation/index.html). Your Book of Hours game directory can be found by right clicking the game in steam and clicking 'browse local files'
 - In your BepInEx config file (Book Of Hours/BepInEx/config/BepInEx.cfg) find the line that says `HideManagerGameObject = false` and change it to `HideManagerGameObject = true`.
