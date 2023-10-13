@@ -11,10 +11,12 @@
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <OutDir>../.local/share/Steam/steamapps/common/Book of Hours/BepInEx/plugins/TheWheel/</OutDir>
+    <Optimize>false</Optimize>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <OutDir>../.local/share/Steam/steamapps/common/Book of Hours/BepInEx/plugins/TheWheel/</OutDir>
+    <Optimize>true</Optimize>
   </PropertyGroup>
 
   <ItemGroup>
