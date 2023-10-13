@@ -1,0 +1,57 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>TheWheelBoH</AssemblyName>
+    <Description>A time control mod for Book of Hours</Description>
+    <Version>1.0.0</Version>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>../.local/share/Steam/steamapps/common/Book of Hours/BepInEx/plugins/TheWheel/</OutputPath>
+    <OutDir>../.local/share/Steam/steamapps/common/Book of Hours/BepInEx/plugins/TheWheel/</OutDir>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>../.local/share/Steam/steamapps/common/Book of Hours/BepInEx/plugins/TheWheel/</OutputPath>
+    <OutDir>../.local/share/Steam/steamapps/common/Book of Hours/BepInEx/plugins/TheWheel/</OutDir>
+    <BaseOutputPath>../.local/share/Steam/steamapps/common/Book of Hours/BepInEx/plugins/TheWheel/</BaseOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
+    <PackageReference Include="BepInEx.Core" Version="5.*" />
+    <PackageReference Include="BepInEx.PluginInfoProps" Version="1.*" />
+    <PackageReference Include="UnityEngine.Modules" Version="2022.3.9" IncludeAssets="compile" />
+  </ItemGroup>
+  
+  <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>..\.local\share\Steam\steamapps\common\Book of Hours\BepInEx\core\0Harmony.dll</HintPath><Private>False</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\.local\share\Steam\steamapps\common\Book of Hours\bh_Data\Managed\Assembly-CSharp.dll</HintPath><Private>False</Private>
+    </Reference>
+    <Reference Include="SecretHistories.Constants">
+      <HintPath>..\.local\share\Steam\steamapps\common\Book of Hours\bh_Data\Managed\SecretHistories.Constants.dll</HintPath><Private>False</Private>
+    </Reference>
+    <Reference Include="SecretHistories.Enums">
+      <HintPath>..\.local\share\Steam\steamapps\common\Book of Hours\bh_Data\Managed\SecretHistories.Enums.dll</HintPath><Private>False</Private>
+    </Reference>
+    <Reference Include="SecretHistories.Interfaces">
+      <HintPath>..\.local\share\Steam\steamapps\common\Book of Hours\bh_Data\Managed\SecretHistories.Interfaces.dll</HintPath><Private>False</Private>
+    </Reference>
+    <Reference Include="SecretHistories.Main">
+      <HintPath>..\.local\share\Steam\steamapps\common\Book of Hours\bh_Data\Managed\SecretHistories.Main.dll</HintPath><Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.InputSystem">
+      <HintPath>..\.local\share\Steam\steamapps\common\Book of Hours\bh_Data\Managed\Unity.InputSystem.dll</HintPath><Private>False</Private>
+    </Reference>
+  </ItemGroup>
+</Project>
