@@ -3,15 +3,15 @@ using UnityEngine;
 
 namespace TheWheelBoH;
 
-public class SpeedSettingTracker:ISettingSubscriber
+public class VVFSpeedSettingTracker:ISettingSubscriber
 {
     private static float[] factorMap = new float[9]
     {
         0.2f,
         0.5f,
         2f,
-        3f,
-        5f,
+        4f,
+        6f,
         8f,
         13f,
         21f,
@@ -23,8 +23,8 @@ public class SpeedSettingTracker:ISettingSubscriber
         if (!(newValue is int num1))
             num1 = 1;
         int num2 = num1;
-        int index = Mathf.Min(SpeedSettingTracker.factorMap.Length - 1, Mathf.Max(num2, 0));
-        TheWheel.speedStep = SpeedSettingTracker.factorMap[index];
+        int index = Mathf.Min(VVFSpeedSettingTracker.factorMap.Length - 1, Mathf.Max(num2, 0));
+        TheWheel.vvfspeedStep = VVFSpeedSettingTracker.factorMap[index];
     }
 
     public void BeforeSettingUpdated(object newValue)

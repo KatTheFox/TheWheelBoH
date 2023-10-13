@@ -23,11 +23,15 @@ namespace TheWheelBoH
     [BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
     public class TheWheel : BaseUnityPlugin
     {
-        public static float speedStep = 0.15f;
+        public static float fspeedStep = 0.15f;
+        public static float vfspeedStep = 0.15f;
+        public static float vvfspeedStep = 0.15f;
         public static string KB1Str = "P";
         public static string KB10Str = "Z";
         public static string KBNextVerb = "Slash";
-        public static SpeedSettingTracker tracker;
+        public static FSpeedSettingTracker ftracker;
+        public static VFSpeedSettingTracker vftracker;
+        public static VVFSpeedSettingTracker vvftracker;
         public static KB1SettingTracker tracker1;
         public static KB10SettingTracker tracker10;
         public static KBNextVerbSettingTracker trackerNextVerb;
@@ -155,17 +159,43 @@ namespace TheWheelBoH
             {
                 try
                 {
-                    Setting speedMultSetting = Watchman.Get<Compendium>().GetEntityById<Setting>("SpeedMultiplier");
-                    if (speedMultSetting == null)
+                    Setting fspeedMultSetting = Watchman.Get<Compendium>().GetEntityById<Setting>("FSpeedMultiplier");
+                    if (fspeedMultSetting == null)
                     {
-                        Logger.LogWarning("Speed Multiplier Setting Missing");
+                        Logger.LogWarning("Fast Speed Multiplier Setting Missing");
                     }
                     else
                     {
-                        speedMultSetting.AddSubscriber(
-                                (ISettingSubscriber)(TheWheel.tracker = new SpeedSettingTracker()))
+                        fspeedMultSetting.AddSubscriber(
+                                (ISettingSubscriber)(TheWheel.ftracker = new FSpeedSettingTracker()))
                             ;
-                        TheWheel.tracker.WhenSettingUpdated(speedMultSetting.CurrentValue);
+                        TheWheel.ftracker.WhenSettingUpdated(fspeedMultSetting.CurrentValue);
+                    }
+                    
+                    Setting vfspeedMultSetting = Watchman.Get<Compendium>().GetEntityById<Setting>("VFSpeedMultiplier");
+                    if (vfspeedMultSetting == null)
+                    {
+                        Logger.LogWarning("Very Fast Speed Multiplier Setting Missing");
+                    }
+                    else
+                    {
+                        vfspeedMultSetting.AddSubscriber(
+                                (ISettingSubscriber)(TheWheel.vftracker = new VFSpeedSettingTracker()))
+                            ;
+                        TheWheel.vftracker.WhenSettingUpdated(vfspeedMultSetting.CurrentValue);
+                    }
+                    
+                    Setting vvfspeedMultSetting = Watchman.Get<Compendium>().GetEntityById<Setting>("VVFSpeedMultiplier");
+                    if (vvfspeedMultSetting == null)
+                    {
+                        Logger.LogWarning("Very Very Fast Speed Multiplier Setting Missing");
+                    }
+                    else
+                    {
+                        vvfspeedMultSetting.AddSubscriber(
+                                (ISettingSubscriber)(TheWheel.vvftracker = new VVFSpeedSettingTracker()))
+                            ;
+                        TheWheel.ftracker.WhenSettingUpdated(vvfspeedMultSetting.CurrentValue);
                     }
 
                     Setting kb1sec = Watchman.Get<Compendium>().GetEntityById<Setting>("ff1sec");
@@ -211,17 +241,33 @@ namespace TheWheelBoH
             }
         }
 
-        private static bool GetTimerMultiplierForSpeedPrefix(Heart __instance, GameSpeed speed,
-            ref float ___veryFastMultiplier, ref float ___fastMultiplier, ref GameSpeedState ___gameSpeedState,
+        private static bool GetTimerMultiplierForSpeedPrefix(Heart __instance, GameSpeed speed, ref GameSpeedState ___gameSpeedState,
             ref float __result)
         {
-            if (speed == GameSpeed.VeryVeryFast)
+            switch (speed)
             {
-                __result = speedStep;
-                return false;
+                case GameSpeed.Paused:
+                    __result = 0.0f;
+                    break;
+                case GameSpeed.Normal:
+                    __result = 1.0f;
+                    break;
+                case GameSpeed.Fast:
+                    __result = TheWheel.fspeedStep;
+                    break;
+                case GameSpeed.VeryFast:
+                    __result = TheWheel.vfspeedStep;
+                    break;
+                case GameSpeed.VeryVeryFast:
+                    __result = TheWheel.vvfspeedStep;
+                    break;
+                default:
+                    NoonUtility.Log("Unknown game speed state: " + ___gameSpeedState.GetEffectiveGameSpeed().ToString());
+                    __result=0.0f;
+                    break;
             }
 
-            return true;
+            return false;
         }
     }
 }
