@@ -10,14 +10,11 @@
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-    <OutputPath>../.local/share/Steam/steamapps/common/Book of Hours/BepInEx/plugins/TheWheel/</OutputPath>
     <OutDir>../.local/share/Steam/steamapps/common/Book of Hours/BepInEx/plugins/TheWheel/</OutDir>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <OutputPath>../.local/share/Steam/steamapps/common/Book of Hours/BepInEx/plugins/TheWheel/</OutputPath>
     <OutDir>../.local/share/Steam/steamapps/common/Book of Hours/BepInEx/plugins/TheWheel/</OutDir>
-    <BaseOutputPath>../.local/share/Steam/steamapps/common/Book of Hours/BepInEx/plugins/TheWheel/</BaseOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
