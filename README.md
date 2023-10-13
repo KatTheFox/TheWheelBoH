@@ -1,6 +1,6 @@
 # The Wheel
 
-`With each turn its cilia pulse and wriggle and its body flushes translucent to crimson. It might be ugly but it is beautiful like the withdrawing of blood from the labyrinths of glass. It does not cease and all its involutions are infinite. The Wheel.`
+> With each turn its cilia pulse and wriggle and its body flushes translucent to crimson. It might be ugly but it is beautiful like the withdrawing of blood from the labyrinths of glass. It does not cease and all its involutions are infinite. The Wheel.
 
 The Wheel is a time control mod for [Book of Hours](https://store.steampowered.com/app/1028310/BOOK_OF_HOURS/), a 2023 game by Weather Factory. It's a port of my [mod of the same name](https://github.com/KatTheFox/The-Wheel) for [Cultist Simulator](https://store.steampowered.com/app/718670/Cultist_Simulator), another Weather Factory game.
 
