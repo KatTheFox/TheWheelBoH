@@ -162,14 +162,14 @@ namespace TheWheelBoH
             return true;
         }
 
-        MethodInfo GetMethodInvariant(Type definingClass, string name)
+        MethodInfo GetMethodInvariant(Type definingClass, string methodName)
         {
-            if (string.IsNullOrWhiteSpace(name))
+            if (string.IsNullOrWhiteSpace(methodName))
                 Logger.LogWarning($"Trying to find whitespace method for class {definingClass.Name} (don't!)");
 
             try
             {
-                MethodInfo method = definingClass.GetMethod(name,
+                MethodInfo method = definingClass.GetMethod(methodName,
                     BindingFlags.Instance | BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic);
 
                 if (method == null)
@@ -180,7 +180,7 @@ namespace TheWheelBoH
             catch (Exception ex)
             {
                 throw new Exception(
-                    $"Failed to find method '{name}'  in '{definingClass.Name}', reason: {ex.FormatException()}");
+                    $"Failed to find method '{methodName}'  in '{definingClass.Name}', reason: {ex.FormatException()}");
             }
         }
 
@@ -202,67 +202,67 @@ namespace TheWheelBoH
                         TheWheel.speedresettracker.WhenSettingUpdated(resetSpeedSetting.CurrentValue);
                     }
                     
-                    Setting fspeedMultSetting = Watchman.Get<Compendium>().GetEntityById<Setting>("FSpeedMultiplier");
-                    if (fspeedMultSetting == null)
+                    Setting fSpeedMultSetting = Watchman.Get<Compendium>().GetEntityById<Setting>("FSpeedMultiplier");
+                    if (fSpeedMultSetting == null)
                     {
                         Logger.LogWarning("Fast Speed Multiplier Setting Missing");
                     }
                     else
                     {
-                        fspeedMultSetting.AddSubscriber(
+                        fSpeedMultSetting.AddSubscriber(
                                 (ISettingSubscriber)(TheWheel.ftracker = new FSpeedSettingTracker()))
                             ;
-                        TheWheel.ftracker.WhenSettingUpdated(fspeedMultSetting.CurrentValue);
+                        TheWheel.ftracker.WhenSettingUpdated(fSpeedMultSetting.CurrentValue);
                     }
                     
-                    Setting vfspeedMultSetting = Watchman.Get<Compendium>().GetEntityById<Setting>("VFSpeedMultiplier");
-                    if (vfspeedMultSetting == null)
+                    Setting vfSpeedMultSetting = Watchman.Get<Compendium>().GetEntityById<Setting>("VFSpeedMultiplier");
+                    if (vfSpeedMultSetting == null)
                     {
                         Logger.LogWarning("Very Fast Speed Multiplier Setting Missing");
                     }
                     else
                     {
-                        vfspeedMultSetting.AddSubscriber(
+                        vfSpeedMultSetting.AddSubscriber(
                                 (ISettingSubscriber)(TheWheel.vftracker = new VFSpeedSettingTracker()))
                             ;
-                        TheWheel.vftracker.WhenSettingUpdated(vfspeedMultSetting.CurrentValue);
+                        TheWheel.vftracker.WhenSettingUpdated(vfSpeedMultSetting.CurrentValue);
                     }
                     
-                    Setting vvfspeedMultSetting = Watchman.Get<Compendium>().GetEntityById<Setting>("VVFSpeedMultiplier");
-                    if (vvfspeedMultSetting == null)
+                    Setting vvfSpeedMultSetting = Watchman.Get<Compendium>().GetEntityById<Setting>("VVFSpeedMultiplier");
+                    if (vvfSpeedMultSetting == null)
                     {
                         Logger.LogWarning("Very Very Fast Speed Multiplier Setting Missing");
                     }
                     else
                     {
-                        vvfspeedMultSetting.AddSubscriber(
+                        vvfSpeedMultSetting.AddSubscriber(
                                 (ISettingSubscriber)(TheWheel.vvftracker = new VVFSpeedSettingTracker()))
                             ;
-                        TheWheel.vvftracker.WhenSettingUpdated(vvfspeedMultSetting.CurrentValue);
+                        TheWheel.vvftracker.WhenSettingUpdated(vvfSpeedMultSetting.CurrentValue);
                     }
 
-                    Setting kb1sec = Watchman.Get<Compendium>().GetEntityById<Setting>("ff1sec");
-                    if (kb1sec == null)
+                    Setting kb1Sec = Watchman.Get<Compendium>().GetEntityById<Setting>("ff1sec");
+                    if (kb1Sec == null)
                     {
                         Logger.LogWarning("one second keybind missing");
                     }
                     else
                     {
-                        kb1sec.AddSubscriber((ISettingSubscriber)(TheWheel.tracker1 = new KB1SettingTracker()))
+                        kb1Sec.AddSubscriber((ISettingSubscriber)(TheWheel.tracker1 = new KB1SettingTracker()))
                             ;
-                        TheWheel.tracker1.WhenSettingUpdated(kb1sec.CurrentValue);
+                        TheWheel.tracker1.WhenSettingUpdated(kb1Sec.CurrentValue);
                     }
 
-                    Setting kb10sec = Watchman.Get<Compendium>().GetEntityById<Setting>("ff10sec");
-                    if (kb10sec == null)
+                    Setting kb10Sec = Watchman.Get<Compendium>().GetEntityById<Setting>("ff10sec");
+                    if (kb10Sec == null)
                     {
                         Logger.LogWarning("ten second keybind missing");
                     }
                     else
                     {
-                        kb10sec.AddSubscriber((ISettingSubscriber)(TheWheel.tracker10 = new KB10SettingTracker()))
+                        kb10Sec.AddSubscriber((ISettingSubscriber)(TheWheel.tracker10 = new KB10SettingTracker()))
                             ;
-                        TheWheel.tracker10.WhenSettingUpdated(kb10sec.CurrentValue);
+                        TheWheel.tracker10.WhenSettingUpdated(kb10Sec.CurrentValue);
                     }
 
                     Setting kbNextVerb = Watchman.Get<Compendium>().GetEntityById<Setting>("ffNextVerb");
