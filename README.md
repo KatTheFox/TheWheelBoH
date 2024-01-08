@@ -29,3 +29,7 @@ If an update to the game overwrites the `culture.json` file, you'll need to re-a
 ## Disclaimers
 
 Modding is not officially supported in Book of Hours. Do not contact Weather Factory with bugs resulting from the use of this mod. As the game updates, expect potential breakages. I am not affiliated with Weather Factory in any way.
+
+The Wheel is unofficial content based on Book of Hours by Weather Factory Ltd. You can find out more and support Book of Hours at [www.weatherfactory.biz](https://www.weatherfactory.biz).
+
+<img src="https://weatherfactory.biz/wp-content/uploads/2022/11/sixth-history-logo-text-black.png" width="120" /> 
